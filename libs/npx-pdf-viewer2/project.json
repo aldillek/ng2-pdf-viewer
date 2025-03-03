@@ -1,0 +1,36 @@
+{
+  "name": "npx-pdf-viewer2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/npx-pdf-viewer2/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["pdf"],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/npx-pdf-viewer2/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/npx-pdf-viewer2/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/npx-pdf-viewer2/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/npx-pdf-viewer2"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

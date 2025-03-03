@@ -21,7 +21,8 @@
     "lib": ["ES2022", "dom"],
     "skipLibCheck": true,
     "paths": {
-      "npx-pdf-viewer": ["libs/npx-pdf-viewer/src/index.ts"]
+      "npx-pdf-viewer": ["libs/npx-pdf-viewer/src/index.ts"],
+      "npx-pdf-viewer2": ["libs/npx-pdf-viewer2/src/index.ts"]
     },
     "rootDir": "."
   },

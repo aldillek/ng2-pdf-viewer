@@ -1,0 +1,12 @@
+{
+  "name": "npx-pdf-viewer2",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^16.1.0",
+    "@angular/core": "^16.1.0",
+    "vite": "^5.0.0",
+    "@analogjs/vite-plugin-angular": "~1.10.0",
+    "@nx/vite": "20.4.6"
+  },
+  "sideEffects": false
+}
