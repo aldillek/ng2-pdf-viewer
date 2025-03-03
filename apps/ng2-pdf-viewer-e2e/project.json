@@ -1,0 +1,22 @@
+{
+  "name": "ng2-pdf-viewer-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ng2-pdf-viewer-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@angular-devkit/build-angular:protractor",
+      "options": {
+        "protractorConfig": "apps/ng2-pdf-viewer-e2e/protractor.conf.js",
+        "devServerTarget": "ng2-pdf-viewer:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "ng2-pdf-viewer:serve:production"
+        }
+      }
+    }
+  },
+  "implicitDependencies": ["ng2-pdf-viewer"],
+  "tags": []
+}

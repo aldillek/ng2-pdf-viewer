@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!-- This line might cause the problem with scroll top  -->
-<html lang="en" data-critters-container>
+<html lang="en">
   <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=11" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,57 +12,18 @@
     <title>ng2-pdf-viewer</title>
     <meta name="description" content="PDF Viewer Component for Angular 5+" />
     <meta name="keywords" content="Angular,PDF,PDF-Viewer" />
-    <base href="ng2-pdf-viewer" />
+    <base href="/" />
 
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-    <style type="text/css">
-      @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 400;
-        src: url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2)
-          format('woff2');
-        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
-          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
-          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
-          U+A720-A7FF;
-      }
-      @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 400;
-        src: url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2)
-          format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-    </style>
-    <style type="text/css">
-      @font-face {
-        font-family: 'Material Icons';
-        font-style: normal;
-        font-weight: 400;
-        src: url(https://fonts.gstatic.com/s/materialicons/v142/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2)
-          format('woff2');
-      }
-      .material-icons {
-        font-family: 'Material Icons';
-        font-weight: normal;
-        font-style: normal;
-        font-size: 24px;
-        line-height: 1;
-        letter-spacing: normal;
-        text-transform: none;
-        display: inline-block;
-        white-space: nowrap;
-        word-wrap: normal;
-        direction: ltr;
-        -webkit-font-feature-settings: 'liga';
-        -webkit-font-smoothing: antialiased;
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <style>
       body {
         margin: 0;
@@ -186,40 +146,6 @@
         }
       }
     </style>
-
-    <style>
-      html {
-        --mdc-checkbox-disabled-selected-icon-color: rgba(0, 0, 0, 0.38);
-        --mdc-checkbox-disabled-unselected-icon-color: rgba(0, 0, 0, 0.38);
-        --mdc-checkbox-selected-checkmark-color: #fff;
-        --mdc-checkbox-selected-focus-icon-color: #ff4081;
-        --mdc-checkbox-selected-hover-icon-color: #ff4081;
-        --mdc-checkbox-selected-icon-color: #ff4081;
-        --mdc-checkbox-selected-pressed-icon-color: #ff4081;
-        --mdc-checkbox-unselected-focus-icon-color: #212121;
-        --mdc-checkbox-unselected-hover-icon-color: #212121;
-        --mdc-checkbox-unselected-icon-color: rgba(0, 0, 0, 0.54);
-        --mdc-checkbox-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
-        --mdc-checkbox-selected-focus-state-layer-color: #ff4081;
-        --mdc-checkbox-selected-hover-state-layer-color: #ff4081;
-        --mdc-checkbox-selected-pressed-state-layer-color: #ff4081;
-        --mdc-checkbox-unselected-focus-state-layer-color: black;
-        --mdc-checkbox-unselected-hover-state-layer-color: black;
-        --mdc-checkbox-unselected-pressed-state-layer-color: black;
-      }
-      html {
-        --mdc-checkbox-state-layer-size: 40px;
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="styles.213ea75e4d8e5780.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript
-      ><link rel="stylesheet" href="styles.213ea75e4d8e5780.css"
-    /></noscript>
   </head>
 
   <body>
@@ -233,8 +159,5 @@
         <div class="sk-cube3 sk-cube"></div>
       </div>
     </pdf-viewer-app>
-    <script src="runtime.bf065c1b648d1fbd.js" type="module"></script>
-    <script src="polyfills.54b7c769118667dd.js" type="module"></script>
-    <script src="main.57d172cce1b4890c.js" type="module"></script>
   </body>
 </html>

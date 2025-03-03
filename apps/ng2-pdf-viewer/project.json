@@ -1,0 +1,106 @@
+{
+  "name": "ng2-pdf-viewer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/ng2-pdf-viewer/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/ng2-pdf-viewer",
+        "index": "apps/ng2-pdf-viewer/src/index.html",
+        "main": "apps/ng2-pdf-viewer/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/ng2-pdf-viewer/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ng2-pdf-viewer/src/favicon.ico",
+          "apps/ng2-pdf-viewer/src/assets"
+        ],
+        "styles": ["apps/ng2-pdf-viewer/src/styles.scss"],
+        "scripts": [],
+        "allowedCommonJsDependencies": [
+          "pdfjs-dist",
+          "pdfjs-dist/web/pdf_viewer"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1.5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "30kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ng2-pdf-viewer/src/environments/environment.ts",
+              "with": "apps/ng2-pdf-viewer/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "optimization": true,
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "ng2-pdf-viewer:build:production"
+        },
+        "development": {
+          "browserTarget": "ng2-pdf-viewer:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ng2-pdf-viewer:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/ng2-pdf-viewer/tsconfig.spec.json",
+        "karmaConfig": "apps/ng2-pdf-viewer/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ng2-pdf-viewer/src/favicon.ico",
+          "apps/ng2-pdf-viewer/src/assets"
+        ],
+        "styles": ["apps/ng2-pdf-viewer/src/styles.scss"],
+        "scripts": []
+      }
+    }
+  }
+}

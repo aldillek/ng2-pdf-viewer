@@ -1,0 +1,20 @@
+{
+  "name": "npx-pdf-viewer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/npx-pdf-viewer/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["pdf"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/npx-pdf-viewer"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
