@@ -1,7 +1,9 @@
-export function assign(obj: any, prop: string, value: any) {
-  obj[prop] = value;
+export function assign(object: any, property: string, value: any) {
+  if (Object.isExtensible(object)) {
+    object[property] = value;
+  }
 }
 
 export function isSSR() {
-  return typeof window === 'undefined';
+  return globalThis.window === undefined;
 }
