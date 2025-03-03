@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from "@angular/material/button";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatTooltipModule } from "@angular/material/tooltip";
-import { MatSelectModule } from "@angular/material/select";
-import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatToolbarModule,
     MatSidenavModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     MatButtonModule,
@@ -30,7 +30,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatToolbarModule,
     MatSidenavModule,
     MatTooltipModule,
-    MatIconModule
-  ]
+    MatIconModule,
+  ],
 })
 export class DemoMaterialModule {}

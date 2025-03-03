@@ -8,11 +8,9 @@ import { GlobalWorkerOptions } from 'pdfjs-dist';
 import * as PDFJS from 'pdfjs-dist';
 
 @Component({
-  template: `
-    <pdf-viewer></pdf-viewer>
-  `
+  template: ` <pdf-viewer></pdf-viewer> `,
 })
-class TestComponent { }
+class TestComponent {}
 
 describe('AppComponent', () => {
   let pdfViewerFixture: ComponentFixture<PdfViewerComponent>;
@@ -23,14 +21,14 @@ describe('AppComponent', () => {
   function setPdf(numPages: number) {
     (pdfViewer as any)._pdf = {
       numPages,
-      destroy: () => { }
+      destroy: () => {},
     };
   }
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent],
-      imports: [PdfViewerModule]
+      imports: [PdfViewerModule],
     })
       .compileComponents()
       .then(() => {
@@ -54,7 +52,7 @@ describe('AppComponent', () => {
       [1, 3, 7, 10].forEach((page: number) => {
         expect((pdfViewer as any).getValidPageNumber(page)).toBe(
           page,
-          `page: ${page}`
+          `page: ${page}`,
         );
       });
     });
@@ -79,7 +77,7 @@ describe('AppComponent', () => {
       const spy = spyOnProperty(
         (pdfViewer as any).pdfViewerContainer.nativeElement,
         'clientWidth',
-        'get'
+        'get',
       ).and.returnValue(0);
 
       expect((pdfViewer as any).getScale(0)).toBe(1);
@@ -95,12 +93,12 @@ describe('AppComponent', () => {
       const PDFJS = require('pdfjs-dist');
 
       expect((pdfViewer as any)._cMapsUrl).toBe(
-        `https://unpkg.com/pdfjs-dist@${(PDFJS as any).version}/cmaps/`
+        `https://unpkg.com/pdfjs-dist@${PDFJS.version}/cmaps/`,
       );
     });
 
     it('should return src', () => {
-      pdfViewer.cMapsUrl = "";
+      pdfViewer.cMapsUrl = '';
       pdfViewer.src = src;
 
       expect((pdfViewer as any).getDocumentParams()).toBe(src);
@@ -152,18 +150,20 @@ describe('AppComponent', () => {
 
     beforeEach(() => {
       (window as any).pdfWorkerSrc = undefined;
-      (window as any)["pdfWorkerSrc1.2.3"] = undefined;
+      (window as any)['pdfWorkerSrc1.2.3'] = undefined;
       (window as any)[`pdfWorkerSrc${curPdfJsVersion}`] = undefined;
-
     });
 
     it('should default to the cdn', () => {
       pdfViewerFixture = TestBed.createComponent(PdfViewerComponent);
       pdfViewer = pdfViewerFixture.debugElement.componentInstance;
 
-      expect(GlobalWorkerOptions.workerSrc).toBe(`https://cdn.jsdelivr.net/npm/pdfjs-dist@${curPdfJsVersion
-        }/legacy/build/pdf.worker.min.mjs`);
-    })
+      expect(GlobalWorkerOptions.workerSrc).toBe(
+        `https://cdn.jsdelivr.net/npm/pdfjs-dist@${
+          curPdfJsVersion
+        }/legacy/build/pdf.worker.min.mjs`,
+      );
+    });
 
     it('should support global override', () => {
       (window as any).pdfWorkerSrc = 'globaloverride';
@@ -172,17 +172,20 @@ describe('AppComponent', () => {
       pdfViewer = pdfViewerFixture.debugElement.componentInstance;
 
       expect(GlobalWorkerOptions.workerSrc).toBe('globaloverride');
-    })
+    });
 
     it('should default to the cdn when version override does not match version', () => {
-      (window as any)["pdfWorkerSrc1.2.3"] = 'globaloverride';
+      (window as any)['pdfWorkerSrc1.2.3'] = 'globaloverride';
 
       pdfViewerFixture = TestBed.createComponent(PdfViewerComponent);
       pdfViewer = pdfViewerFixture.debugElement.componentInstance;
 
-      expect(GlobalWorkerOptions.workerSrc).toBe(`https://cdn.jsdelivr.net/npm/pdfjs-dist@${curPdfJsVersion
-        }/legacy/build/pdf.worker.min.mjs`);
-    })
+      expect(GlobalWorkerOptions.workerSrc).toBe(
+        `https://cdn.jsdelivr.net/npm/pdfjs-dist@${
+          curPdfJsVersion
+        }/legacy/build/pdf.worker.min.mjs`,
+      );
+    });
 
     it('should take version override with version match', () => {
       (window as any)[`pdfWorkerSrc${curPdfJsVersion}`] = 'globaloverride';
@@ -191,6 +194,6 @@ describe('AppComponent', () => {
       pdfViewer = pdfViewerFixture.debugElement.componentInstance;
 
       expect(GlobalWorkerOptions.workerSrc).toBe(`globaloverride`);
-    })
-  })
+    });
+  });
 });

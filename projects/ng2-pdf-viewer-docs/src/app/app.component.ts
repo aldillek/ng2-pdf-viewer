@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
 
     if (error.name === 'PasswordException') {
       const password = prompt(
-        'This document is password protected. Enter the password:'
+        'This document is password protected. Enter the password:',
       );
 
       if (password) {

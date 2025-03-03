@@ -241,7 +241,7 @@ export class PdfViewerComponent
 
   constructor(
     private element: ElementRef<HTMLElement>,
-    private ngZone: NgZone
+    private ngZone: NgZone,
   ) {
     if (isSSR()) {
       return;
@@ -382,7 +382,7 @@ export class PdfViewerComponent
 
   private getPDFLinkServiceConfig() {
     const linkTarget = PdfViewerComponent.getLinkTarget(
-      this._externalLinkTarget
+      this._externalLinkTarget,
     );
 
     if (linkTarget) {
@@ -467,7 +467,7 @@ export class PdfViewerComponent
       this.pdfViewer = new PDFJSViewer.PDFViewer(this.getPDFOptions());
     } else {
       this.pdfViewer = new PDFJSViewer.PDFSinglePageViewer(
-        this.getPDFOptions()
+        this.getPDFOptions(),
       );
     }
     this.pdfLinkService.setViewer(this.pdfViewer);
@@ -530,13 +530,13 @@ export class PdfViewerComponent
 
     this.loadingTask = getDocument(this.getDocumentParams());
 
-    this.loadingTask!.onProgress = (progressData: PDFProgressData) => {
+    this.loadingTask.onProgress = (progressData: PDFProgressData) => {
       this.onProgress.emit(progressData);
     };
 
     const src = this.src;
 
-    from(this.loadingTask!.promise as Promise<PDFDocumentProxy>)
+    from(this.loadingTask.promise)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (pdf) => {
@@ -570,7 +570,7 @@ export class PdfViewerComponent
     ) {
       // wait until at least the first page is available.
       this.pdfViewer.firstPagePromise?.then(
-        () => (this.pdfViewer.pagesRotation = this._rotation)
+        () => (this.pdfViewer.pagesRotation = this._rotation),
       );
     }
 
@@ -614,7 +614,7 @@ export class PdfViewerComponent
       case 'page-fit':
         ratio = Math.min(
           pdfContainerHeight / viewportHeight,
-          pdfContainerWidth / viewportWidth
+          pdfContainerWidth / viewportWidth,
         );
         break;
       case 'page-height':
@@ -655,7 +655,7 @@ export class PdfViewerComponent
         .pipe(
           debounceTime(100),
           filter(() => this._canAutoResize && !!this._pdf),
-          takeUntil(this.destroy$)
+          takeUntil(this.destroy$),
         )
         .subscribe(() => {
           this.updateSize();

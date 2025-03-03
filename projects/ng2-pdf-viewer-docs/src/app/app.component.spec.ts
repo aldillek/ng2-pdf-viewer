@@ -15,8 +15,8 @@ describe('AppComponent', () => {
         NoopAnimationsModule,
         DemoMaterialModule,
 
-        PdfViewerModule
-      ]
+        PdfViewerModule,
+      ],
     }).compileComponents();
   }));
   it('should create the app', waitForAsync(() => {
