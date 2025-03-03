@@ -1,44 +1,43 @@
 {
   "name": "ng2-pdf-viewer",
   "version": "10.4.0",
-  "description": "Angular 5+ component for rendering PDF",
-  "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start-library": "ng build pdf-viewer --watch",
-    "start": "ng serve ng2-pdf-viewer-docs",
-    "build": "ng build --configuration production",
-    "build:stats": "ng build --stats-json",
-    "watch": "ng build --watch --configuration development",
-    "analyze": "webpack-bundle-analyzer dist/stats.json",
-    "test": "ng test --watch false",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
-    "test:w": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "packagr": "ng-packagr -p ng-package.json",
-    "docs": "ng build --configuration production --output-path docs --base-href ng2-pdf-viewer && cp ./docs/index.html ./docs/404.html"
-  },
   "private": false,
-  "repository": {
-    "type": "git",
-    "url": "git+https://vadimdez@github.com/VadimDez/ng2-pdf-viewer.git"
-  },
+  "description": "Angular 5+ component for rendering PDF",
   "keywords": [
     "angular",
     "pdf",
-    "angular",
     "angular-pdf",
     "angular2-pdf",
     "ng2",
     "ng2-pdf",
     "angular5"
   ],
-  "author": "Vadym Yatsyuk <vadym.yatsyuk@gmail.com>",
+  "homepage": "https://github.com/VadimDez/ng2-pdf-viewer#readme",
   "bugs": {
     "url": "https://github.com/VadimDez/ng2-pdf-viewer/issues"
   },
-  "homepage": "https://github.com/VadimDez/ng2-pdf-viewer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://vadimdez@github.com/VadimDez/ng2-pdf-viewer.git"
+  },
+  "license": "MIT",
+  "author": "Vadym Yatsyuk <vadym.yatsyuk@gmail.com>",
+  "scripts": {
+    "analyze": "webpack-bundle-analyzer dist/stats.json",
+    "build": "ng build --configuration production",
+    "build:stats": "ng build --stats-json",
+    "docs": "ng build --configuration production --output-path docs --base-href ng2-pdf-viewer && cp ./docs/index.html ./docs/404.html",
+    "e2e": "ng e2e",
+    "lint": "ng lint",
+    "ng": "ng",
+    "packagr": "ng-packagr -p ng-package.json",
+    "start": "ng serve ng2-pdf-viewer-docs",
+    "start-library": "ng build pdf-viewer --watch",
+    "test": "ng test --watch false",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
+    "test:w": "ng test",
+    "watch": "ng build --watch --configuration development"
+  },
   "dependencies": {
     "pdfjs-dist": "4.10.38",
     "tslib": "^2.8.1"
@@ -57,10 +56,12 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@eslint/js": "^9.21.0",
     "@types/jasmine": "~4.3.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^20.3.1",
     "codelyzer": "^6.0.2",
+    "eslint": "^9.21.0",
     "jasmine-core": "^4.6.0",
     "jasmine-spec-reporter": "^7.0.0",
     "karma": "~6.4.0",
@@ -69,10 +70,12 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^16.1.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-packagejson": "^2.5.10",
     "protractor": "~7.0.0",
     "rxjs": "~7.8.0",
-    "tslint": "^6.1.3",
-    "typescript": "~5.1.3",
+    "typescript": "~5.1.6",
+    "typescript-eslint": "^8.26.0",
     "webpack-bundle-analyzer": "^4.7.0",
     "zone.js": "~0.13.0"
   }
