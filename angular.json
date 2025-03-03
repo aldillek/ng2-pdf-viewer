@@ -3,28 +3,31 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng2-pdf-viewer": {
+    "ng2-pdf-viewer-docs": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/ng2-pdf-viewer-docs",
+      "sourceRoot": "projects/ng2-pdf-viewer-docs/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
-            "index": "src/index.html",
-            "main": "src/main.ts",
+            "outputPath": "dist/ng2-pdf-viewer-docs",
+            "index": "projects/ng2-pdf-viewer-docs/src/index.html",
+            "main": "projects/ng2-pdf-viewer-docs/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "projects/ng2-pdf-viewer-docs/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "projects/ng2-pdf-viewer-docs/src/favicon.ico",
+              "projects/ng2-pdf-viewer-docs/src/assets"
+            ],
+            "styles": ["projects/ng2-pdf-viewer-docs/src/styles.scss"],
             "scripts": [],
             "allowedCommonJsDependencies": [
               "pdfjs-dist",
@@ -37,27 +40,15 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1.5mb"
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "30kb"
+                  "maximumError": "4kb"
                 }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all",
-              "optimization": true,
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -74,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng2-pdf-viewer:build:production"
+              "browserTarget": "ng2-pdf-viewer-docs:build:production"
             },
             "development": {
-              "browserTarget": "ng2-pdf-viewer:build:development"
+              "browserTarget": "ng2-pdf-viewer-docs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,31 +76,87 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng2-pdf-viewer:build"
+            "browserTarget": "ng2-pdf-viewer-docs:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "tsConfig": "projects/ng2-pdf-viewer-docs/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "projects/ng2-pdf-viewer-docs/src/favicon.ico",
+              "projects/ng2-pdf-viewer-docs/src/assets"
+            ],
+            "styles": ["projects/ng2-pdf-viewer-docs/src/styles.scss"],
             "scripts": []
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        }
+      }
+    },
+    "ng2-pdf-viewer": {
+      "projectType": "library",
+      "root": "projects/ng2-pdf-viewer",
+      "sourceRoot": "projects/ng2-pdf-viewer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng2-pdf-viewer:serve"
+            "project": "projects/ng2-pdf-viewer/ng-package.json"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ng2-pdf-viewer:serve:production"
+              "tsConfig": "projects/ng2-pdf-viewer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng2-pdf-viewer/tsconfig.lib.json"
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ng2-pdf-viewer/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "pdf-viewer": {
+      "projectType": "library",
+      "root": "projects/pdf-viewer",
+      "sourceRoot": "projects/pdf-viewer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pdf-viewer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pdf-viewer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pdf-viewer/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/pdf-viewer/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }

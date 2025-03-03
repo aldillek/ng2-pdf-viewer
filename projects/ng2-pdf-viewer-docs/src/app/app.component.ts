@@ -2,19 +2,19 @@
  * Created by vadimdez on 21/06/16.
  */
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import {
-  PDFProgressData,
-  PDFDocumentProxy,
-  PDFSource,
-  ZoomScale
-} from './pdf-viewer/pdf-viewer.module';
 
-import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
+import {
+  PDFDocumentProxy,
+  PDFProgressData,
+  PDFSource,
+  PdfViewerComponent,
+  ZoomScale,
+} from 'pdf-viewer';
 
 @Component({
   selector: 'pdf-viewer-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   pdfSrc: string | Uint8Array | PDFSource = './assets/pdf-test.pdf';
@@ -185,7 +185,7 @@ export class AppComponent implements OnInit {
    */
   scrollToPage() {
     this.pdfComponent.pdfViewer.scrollPageIntoView({
-      pageNumber: 3
+      pageNumber: 3,
     });
   }
 

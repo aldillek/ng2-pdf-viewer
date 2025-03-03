@@ -15,15 +15,15 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "paths": {
+      "pdf-viewer": ["dist/pdf-viewer"]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
-    "skipLibCheck": true, // see https://github.com/mozilla/pdf.js/issues/16705
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true // see https://github.com/mozilla/pdf.js/issues/16705
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

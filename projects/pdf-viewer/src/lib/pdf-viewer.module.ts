@@ -5,10 +5,10 @@ import { NgModule } from '@angular/core';
 
 import { PdfViewerComponent } from './pdf-viewer.component';
 
-export * from './typings';
+export * from '../utils/typings';
 
 @NgModule({
   declarations: [PdfViewerComponent],
-  exports: [PdfViewerComponent]
+  exports: [PdfViewerComponent],
 })
 export class PdfViewerModule {}

@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DemoMaterialModule } from './material.module';
-import { PdfViewerModule } from './pdf-viewer/pdf-viewer.module';
 import { AppComponent } from './app.component';
+import { PdfViewerModule } from 'projects/pdf-viewer/src/public-api';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,10 +14,9 @@ import { AppComponent } from './app.component';
     FormsModule,
     NoopAnimationsModule,
     DemoMaterialModule,
-
-    PdfViewerModule
+    PdfViewerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
