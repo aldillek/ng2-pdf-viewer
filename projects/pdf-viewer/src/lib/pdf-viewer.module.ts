@@ -8,7 +8,7 @@ import { PdfViewerComponent } from './pdf-viewer.component';
 export * from '../utils/typings';
 
 @NgModule({
-  declarations: [PdfViewerComponent],
+  imports: [PdfViewerComponent],
   exports: [PdfViewerComponent],
 })
 export class PdfViewerModule {}

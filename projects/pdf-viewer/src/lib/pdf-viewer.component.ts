@@ -65,6 +65,7 @@ export enum RenderTextMode {
       <div class="pdfViewer"></div>
     </div>
   `,
+  standalone: true,
   styleUrls: ['./pdf-viewer.component.scss'],
 })
 export class PdfViewerComponent
