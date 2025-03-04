@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -20,14 +21,14 @@ export function createEventBus(pdfJsViewer: any, destroy$: Subject<void>) {
 
 function attachDOMEventsToEventBus(
   eventBus: EventBus,
-  destroy$: Subject<void>
+  destroy$: Subject<void>,
 ): void {
   fromEvent(eventBus, 'documentload')
     .pipe(takeUntil(destroy$))
     .subscribe(() => {
       const event = document.createEvent('CustomEvent');
       event.initCustomEvent('documentload', true, true, {});
-      window.dispatchEvent(event);
+      globalThis.dispatchEvent(event);
     });
 
   fromEvent(eventBus, 'pagerendered')
@@ -105,7 +106,7 @@ function attachDOMEventsToEventBus(
         highlightAll,
         findPrevious,
       }: any) => {
-        if (source === window) {
+        if (source === globalThis) {
           return; // event comes from FirefoxCom, no need to replicate
         }
         const event = document.createEvent('CustomEvent');
@@ -116,8 +117,8 @@ function attachDOMEventsToEventBus(
           highlightAll,
           findPrevious,
         });
-        window.dispatchEvent(event);
-      }
+        globalThis.dispatchEvent(event);
+      },
     );
 
   fromEvent(eventBus, 'attachmentsloaded')
@@ -162,7 +163,7 @@ function attachDOMEventsToEventBus(
         active,
         switchInProgress,
       });
-      window.dispatchEvent(event);
+      globalThis.dispatchEvent(event);
     });
 
   fromEvent(eventBus, 'outlineloaded')

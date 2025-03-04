@@ -18,7 +18,13 @@ import {
 } from '@angular/core';
 import { from, fromEvent, Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
-import { version, getDocument, GlobalWorkerOptions } from 'pdfjs-dist';
+import {
+  version,
+  getDocument,
+  GlobalWorkerOptions,
+  type PDFDocumentProxy,
+  type PDFPageProxy,
+} from 'pdfjs-dist';
 import * as PDFJS from 'pdfjs-dist';
 import * as PDFJSViewer from 'pdfjs-dist/web/pdf_viewer.mjs';
 import { LinkTarget } from 'pdfjs-dist/web/pdf_viewer.mjs';
@@ -26,9 +32,7 @@ import { createEventBus } from '../utils/event-bus-utils';
 import { assign, isSSR } from '../utils/helpers';
 import type {
   PDFSource,
-  PDFPageProxy,
   PDFProgressData,
-  PDFDocumentProxy,
   PDFDocumentLoadingTask,
   PDFViewerOptions,
   ZoomScale,
