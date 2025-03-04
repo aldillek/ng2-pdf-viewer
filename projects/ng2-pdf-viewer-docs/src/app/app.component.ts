@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   error: any;
   page = 1;
   rotation = 0;
-  zoom = 1.0;
+  zoom = 1;
   zoomScale: ZoomScale = 'page-width';
   originalSize = false;
   pdf: any;
@@ -53,13 +53,13 @@ export class AppComponent implements OnInit {
     xhr.open('GET', '/assets/pdf-test.pdf', true);
     xhr.responseType = 'blob';
 
-    xhr.onload = (e: any) => {
+    xhr.addEventListener('load', (e: any) => {
       console.log(xhr);
       if (xhr.status === 200) {
         const blob = new Blob([xhr.response], { type: 'application/pdf' });
         this.pdfSrc = URL.createObjectURL(blob);
       }
-    };
+    });
 
     xhr.send();
   }
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
    * Set custom path to pdf worker
    */
   setCustomWorkerPath() {
-    (window as any).pdfWorkerSrc = '/lib/pdfjs-dist/build/pdf.worker.js';
+    (globalThis as any).pdfWorkerSrc = '/lib/pdfjs-dist/build/pdf.worker.js';
   }
 
   incrementPage(amount: number) {
@@ -92,9 +92,9 @@ export class AppComponent implements OnInit {
     if (typeof FileReader !== 'undefined') {
       const reader = new FileReader();
 
-      reader.onload = (e: any) => {
+      reader.addEventListener('load', (e: any) => {
         this.pdfSrc = e.target.result;
-      };
+      });
 
       reader.readAsArrayBuffer($pdf.files[0]);
     }
@@ -140,20 +140,20 @@ export class AppComponent implements OnInit {
   }
 
   setPassword(password: string) {
-    let newSrc: PDFSource;
+    let newSource: PDFSource;
 
     if (this.pdfSrc instanceof ArrayBuffer) {
-      newSrc = { data: this.pdfSrc as any };
+      newSource = { data: this.pdfSrc as any };
       // newSrc = { data: this.pdfSrc };
     } else if (typeof this.pdfSrc === 'string') {
-      newSrc = { url: this.pdfSrc };
+      newSource = { url: this.pdfSrc };
     } else {
-      newSrc = { ...this.pdfSrc };
+      newSource = { ...this.pdfSrc };
     }
 
-    newSrc.password = password;
+    newSource.password = password;
 
-    this.pdfSrc = newSrc;
+    this.pdfSrc = newSource;
   }
 
   /**
@@ -212,12 +212,12 @@ export class AppComponent implements OnInit {
    *
    * @param e number
    */
-  pageChange(e: number) {
-    console.log('(page-change)', e);
+  pageChange(event: Event) {
+    console.log('(page-change)', event);
   }
 
   searchQueryChanged(newQuery: string) {
-    const type = newQuery !== this.pdfQuery ? '' : 'again';
+    const type = newQuery === this.pdfQuery ? 'again' : '';
     this.pdfQuery = newQuery;
 
     this.pdfComponent.eventBus.dispatch('find', {
