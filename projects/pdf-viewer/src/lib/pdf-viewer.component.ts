@@ -38,6 +38,7 @@ import type {
   ZoomScale,
 } from '../utils/typings';
 import { BORDER_WIDTH, CSS_UNITS } from '../utils/constants';
+import { DocumentInitParameters } from 'pdfjs-dist/types/src/display/api';
 
 if (!isSSR()) {
   // assign(PDFJS, 'verbosity', VerbosityLevel.INFOS);
@@ -444,27 +445,27 @@ export class PdfViewerComponent
     return page;
   }
 
-  private getDocumentParams() {
-    const sourceType = typeof this.src();
-
+  private getDocumentParams(
+    source: string | DocumentInitParameters | Uint8Array,
+  ): DocumentInitParameters {
     if (!this.cMapsUrl()) {
-      return this.src();
+      return source;
     }
 
-    const parameters: any = {
+    const parameters: DocumentInitParameters = {
       cMapUrl: this.cMapsUrl(),
       cMapPacked: true,
       enableXfa: true,
     };
     parameters.isEvalSupported = false; // http://cve.org/CVERecord?id=CVE-2024-4367
 
-    if (sourceType === 'string') {
-      parameters.url = this.src();
-    } else if (sourceType === 'object') {
-      if ((this.src() as any).byteLength === undefined) {
-        Object.assign(parameters, this.src());
+    if (typeof source === 'string') {
+      parameters.url = source;
+    } else if (typeof source === 'object' && 'byteLength' in source) {
+      if (source.byteLength === undefined) {
+        Object.assign(parameters, source);
       } else {
-        parameters.data = this.src();
+        parameters.data = source;
       }
     }
 
@@ -472,7 +473,8 @@ export class PdfViewerComponent
   }
 
   private loadPDF() {
-    if (!this.src) {
+    const source = this.src();
+    if (!source) {
       return;
     }
 
@@ -485,13 +487,11 @@ export class PdfViewerComponent
 
     this.setupViewer();
 
-    this.loadingTask = getDocument(this.getDocumentParams());
+    this.loadingTask = getDocument(this.getDocumentParams(source));
 
     this.loadingTask.onProgress = (progressData: PDFProgressData) => {
       this.onProgress.emit(progressData);
     };
-
-    const source = this.src();
 
     from(this.loadingTask.promise)
       .pipe(takeUntil(this.destroy$))
