@@ -7,6 +7,8 @@ export type PDFDocumentLoadingTask =
 export type PDFViewerOptions =
   import('pdfjs-dist/types/web/pdf_viewer').PDFViewerOptions;
 
+export { PDFDocumentProxy } from 'pdfjs-dist';
+
 export interface PDFProgressData {
   loaded: number;
   total: number;

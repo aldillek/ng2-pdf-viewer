@@ -3,7 +3,6 @@
  */
 import {
   Component,
-  Input,
   ElementRef,
   OnChanges,
   SimpleChanges,
@@ -29,7 +28,7 @@ import * as PDFJS from 'pdfjs-dist';
 import * as PDFJSViewer from 'pdfjs-dist/web/pdf_viewer.mjs';
 import { LinkTarget } from 'pdfjs-dist/web/pdf_viewer.mjs';
 import { createEventBus } from '../utils/event-bus-utils';
-import { assign, isSSR } from '../utils/helpers';
+import { isSSR } from '../utils/helpers';
 import type {
   PDFSource,
   PDFProgressData,
@@ -39,6 +38,11 @@ import type {
 } from '../utils/typings';
 import { BORDER_WIDTH, CSS_UNITS } from '../utils/constants';
 import { DocumentInitParameters } from 'pdfjs-dist/types/src/display/api';
+
+declare global {
+  // eslint-disable-next-line no-var
+  var pdfWorkerSource: string;
+}
 
 if (!isSSR()) {
   // assign(PDFJS, 'verbosity', VerbosityLevel.INFOS);
@@ -207,27 +211,10 @@ export class PdfViewerComponent
     if (isSSR()) {
       return;
     }
-
-    let pdfWorkerSource: string;
-
-    const pdfJsVersion: string = version;
-    pdfWorkerSource = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfJsVersion}/legacy/build/pdf.worker.min.mjs`;
-    // const versionSpecificPdfWorkerUrl: string =
-    //   globalThis[`pdfWorkerSrc${pdfJsVersion}`];
-
-    // if (versionSpecificPdfWorkerUrl) {
-    //   pdfWorkerSource = versionSpecificPdfWorkerUrl;
-    // } else if (
-    //   Object.prototype.hasOwnProperty.call(globalThis, 'pdfWorkerSrc') &&
-    //   typeof (globalThis as any).pdfWorkerSrc === 'string' &&
-    //   (globalThis as any).pdfWorkerSrc
-    // ) {
-    //   pdfWorkerSource = (globalThis as any).pdfWorkerSrc;
-    // } else {
-    //   pdfWorkerSource = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfJsVersion}/legacy/build/pdf.worker.min.mjs`;
-    // }
-
-    assign(GlobalWorkerOptions, 'workerSrc', pdfWorkerSource);
+    const versionSpecificPdfWorkerUrl: string =
+      globalThis.pdfWorkerSource ||
+      `//unpkg.com/pdfjs-dist@${version}/build/pdf.worker.min.mjs`;
+    GlobalWorkerOptions.workerSrc = versionSpecificPdfWorkerUrl;
   }
 
   ngAfterViewChecked(): void {

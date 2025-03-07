@@ -4,3 +4,4 @@
 
 export * from './lib/pdf-viewer.component';
 export * from './lib/pdf-viewer.module';
+export * from './utils/typings';
