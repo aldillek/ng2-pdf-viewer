@@ -1,0 +1,26 @@
+diff --git a/build/pdf.mjs b/build/pdf.mjs
+index 0d201af6b5ffdeaedd0ed5b1b12050e51335e3ee..3f9267553efb2c621f371655e5fa91a06967ec38 100644
+--- a/build/pdf.mjs
++++ b/build/pdf.mjs
+@@ -12427,7 +12427,7 @@ class PDFWorker {
+       if (this.#mainThreadWorkerMessageHandler) {
+         return this.#mainThreadWorkerMessageHandler;
+       }
+-      const worker = await import(/*webpackIgnore: true*/this.workerSrc);
++      const worker = await import(/*webpackIgnore: true*/ /* @vite-ignore */this.workerSrc);
+       return worker.WorkerMessageHandler;
+     };
+     return shadow(this, "_setupFakeWorkerGlobal", loader());
+diff --git a/web/pdf_viewer.mjs b/web/pdf_viewer.mjs
+index 1bb510f01fac2a7475755da113a75876f26fea14..fdfa14210c76c3495b4eb3405a08e43fdabdbad2 100644
+--- a/web/pdf_viewer.mjs
++++ b/web/pdf_viewer.mjs
+@@ -6243,7 +6243,7 @@ async function docProperties(pdfDocument) {
+ class GenericScripting {
+   constructor(sandboxBundleSrc) {
+     this._ready = new Promise((resolve, reject) => {
+-      const sandbox = import(/*webpackIgnore: true*/sandboxBundleSrc);
++      const sandbox = import(/*webpackIgnore: true*/ /* @vite-ignore */sandboxBundleSrc);
+       sandbox.then(pdfjsSandbox => {
+         resolve(pdfjsSandbox.QuickJSSandbox());
+       }).catch(reject);

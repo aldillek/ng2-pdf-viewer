@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  pdfjs-dist:
+    hash: bd94900045028497b624dfd5cbc0677f2ffc7a9b75f1e3287c3995a7ea43c572
+    path: patches/pdfjs-dist.patch
+
 importers:
 
   .:
@@ -34,7 +39,7 @@ importers:
         version: 17.3.12(@angular/common@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(@angular/platform-browser@17.3.12(@angular/animations@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10)))(@angular/common@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10)))(rxjs@7.8.2)
       '@angular/material':
         specifier: ^17.3.10
-        version: 17.3.10(twaj2k3bizsmubuzgzeiif4aii)
+        version: 17.3.10(7638bce466a0bb409b14f5138dd8c0ed)
       '@angular/platform-browser':
         specifier: ^17.3.12
         version: 17.3.12(@angular/animations@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10)))(@angular/common@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))
@@ -46,7 +51,7 @@ importers:
         version: 17.3.12(@angular/common@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(@angular/platform-browser@17.3.12(@angular/animations@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10)))(@angular/common@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10)))(rxjs@7.8.2)
       pdfjs-dist:
         specifier: 4.10.38
-        version: 4.10.38
+        version: 4.10.38(patch_hash=bd94900045028497b624dfd5cbc0677f2ffc7a9b75f1e3287c3995a7ea43c572)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -5741,7 +5746,7 @@ snapshots:
 
   '@angular/language-service@17.3.12': {}
 
-  '@angular/material@17.3.10(twaj2k3bizsmubuzgzeiif4aii)':
+  '@angular/material@17.3.10(7638bce466a0bb409b14f5138dd8c0ed)':
     dependencies:
       '@angular/animations': 17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))
       '@angular/cdk': 17.3.10(@angular/common@17.3.12(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@17.3.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
@@ -10520,7 +10525,7 @@ snapshots:
 
   path-type@4.0.0: {}
 
-  pdfjs-dist@4.10.38:
+  pdfjs-dist@4.10.38(patch_hash=bd94900045028497b624dfd5cbc0677f2ffc7a9b75f1e3287c3995a7ea43c572):
     optionalDependencies:
       '@napi-rs/canvas': 0.1.67
 

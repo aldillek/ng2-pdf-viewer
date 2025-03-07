@@ -78,5 +78,10 @@
     "typescript-eslint": "^8.26.0",
     "webpack-bundle-analyzer": "^4.7.0",
     "zone.js": "~0.14.10"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "pdfjs-dist": "patches/pdfjs-dist.patch"
+    }
   }
 }
